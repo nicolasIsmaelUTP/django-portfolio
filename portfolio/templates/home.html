@@ -1,15 +1,48 @@
 {% extends 'layout.html' %}
 {% block content %}
 {% load static %}
-<img src="{% static 'portfolio/Foto-de-perfil-mas-desenfocado.png' %}" alt="profile picture" class="profile-img">
-<h1>Home</h1>
-{% for project in projects %}
-<h2>{{ project.title }}</h2>
-<p>{{ project.description }}</p>
-<img src="{{ project.image.url }}" alt="{{ project.title }}">
-{% if project.url %}
-<a href="{{ project.url }}">View Project</a>
-{% endif %}
 
-{% endfor %}
-{% endblock %}
+<header class="row bg-black">
+    <div class="col-md-4">
+        <img src="{% static 'portfolio/Foto-de-perfil-mas-desenfocado.png' %}" alt="profile picture" class="img-fluid">
+
+    </div>
+
+    <div class="col-md-8 my-auto">
+        <h1>I am <strong>Nicolas Alayo Arias</strong></h1>
+        <h3>I am Python FullStack Developer</h3>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto commodi, nisi, sapiente reiciendis quidem
+            molestias asperiores dicta nulla ducimus ipsam hic ut illum cumque, recusandae doloremque quasi.
+            Voluptatibus voluptatum fugiat sint libero eos! Dolorum velit in dolore ipsa dignissimos inventore excepturi
+            soluta harum, molestiae exercitationem perspiciatis repellendus quos. Cum sint in ex amet quasi iure
+            repellendus provident suscipit accusantium eaque dolorum, quidem tempora hic temporibus, dolores ratione
+            reprehenderit omnis repudiandae perferendis nam illum vero, laboriosam ipsum iste! Modi corrupti fugit
+            voluptatibus voluptatum sunt quidem, explicabo doloribus et. Illo dicta ex, fugit doloribus alias,
+            cupiditate doloremque ad nisi earum neque debitis!</p>
+        <a href="{% static 'portfolio/Trabajo Grupal.S3.s1.pdf' %}"
+            class="btn btn-primary btn-lg rounded-0 my-3">Download CV</a>
+    </div>
+</header>
+
+<div class="row my-4 text-center">
+    <h3>My Projects</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, quam.</p>
+    {% for project in projects %}
+
+    <div class="col-md-4 p-4    ">
+        <div class="card bg-black card-project">
+            <div class="card-body">
+                <img src="{{ project.image.url }}" alt="{{ project.title }}" class="card-img-top">
+                <h2>{{ project.title }}</h2>
+                <p>{{ project.description }}</p>
+
+                {% if project.url %}
+                <a href="{{ project.url }}" class="btn btn-light rounded-0 btn-sm" target="_blank">{{ project.url }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+    {% endblock %}
+</div>
